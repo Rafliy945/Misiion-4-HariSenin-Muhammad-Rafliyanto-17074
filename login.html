@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise - Login/Daftar</title>
+  <link rel="stylesheet" href="./src/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box" id="loginBox">
+            <div class="logo">
+                <div class="logo-circle">
+                    <span>Chill</span>
+                </div>
+            </div>
+            
+            <h1 class="welcome-text">Welcome Back! ✨</h1>
+            <p class="subtitle">Let's get things done today 🚀</p>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="login-username">Username</label>
+                    <input type="text" id="login-username" placeholder="masukkan username kamu" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="masukkan password kamu" required>
+                </div>
+                
+                <button type="submit" class="btn-login">
+                    <span>Let's Go!</span>
+                    <span class="emoji">🎯</span>
+                </button>
+            </form>
+            
+            <div class="signup-text">
+                <p>Belum punya akun? <a href="#" id="signupLink">Daftar yuk!</a></p>
+            </div>
+        </div>
+        
+        <div class="login-box hidden" id="registerBox">
+            <div class="logo">
+                <div class="logo-circle">
+                    <span>Chill</span>
+                </div>
+            </div>
+            
+            <h1 class="welcome-text">Join Chill! 🌟</h1>
+            <p class="subtitle">Daftar untuk mulai produktif hari ini 📝</p>
+            
+            <form id="registerForm">
+                <div class="input-group">
+                    <label for="reg-username">Username</label>
+                    <input type="text" id="reg-username" placeholder="pilih username" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="reg-absen">No. Absen</label>
+                    <input type="number" id="reg-absen" placeholder="masukkan nomor absen" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="reg-divisi">Divisi</label>
+                    <input type="text" id="reg-divisi" placeholder="masukkan divisi kamu" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" placeholder="buat password" required>
+                </div>
+                
+                <button type="submit" class="btn-login">
+                    <span>Daftar Sekarang</span>
+                    <span class="emoji">🚀</span>
+                </button>
+            </form>
+            
+            <div class="signup-text">
+                <p>Sudah punya akun? <a href="#" id="loginLink">Login yuk!</a></p>
+            </div>
+        </div>
+        
+        <div class="decorative-elements">
+            <div class="blob blob1"></div>
+            <div class="blob blob2"></div>
+            <div class="blob blob3"></div>
+        </div>
+    </div>
+    
+    <script src="./src/login.js"></script>
+</body>
+</html>

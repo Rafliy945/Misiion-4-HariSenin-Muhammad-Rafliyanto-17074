@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chill - To Do List</title>
+      <link href="/global.css" rel="stylesheet">
+      
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+    <div id="notificationContainer"></div>
+
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <div class="logo-circle">
+                    <span>Chill</span>
+                </div>
+            </div>
+            <div class="user-info">
+                <span class="greeting" id="greeting">Halo, <strong id="userName"></strong>! 👋</span>
+                <button class="btn-logout" id="logoutBtn">Logout</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="profile-section">
+                <h2>Profile</h2>
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <span id="userInitial"></span>
+                    </div>
+                    <div class="profile-info">
+                        <h3 id="profileName"></h3>
+                        <p id="profileRole">Productivity Warrior ⚡</p>
+                        <p><strong>No. Absen:</strong> <span id="profileAbsen"></span></p>
+                        <p><strong>Divisi:</strong> <span id="profileDivisi"></span></p>
+                        <button class="btn-update-profile" id="openProfileModalBtn">Ubah Profile</button>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="time-section">
+                <h2>Time</h2>
+                <div class="time-card">
+                    <div class="current-time">
+                        <span class="time" id="currentTime">00:00</span>
+                        <span class="date" id="currentDate">Senin, 1 Januari 2025</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="task-input-section">
+                <h2>Text Area</h2>
+                <form id="taskForm">
+                    <textarea 
+                        id="taskText" 
+                        placeholder="Tulis tugas kamu di sini... 📝"
+                        rows="3"
+                        required
+                    ></textarea>
+                    
+                    <div class="task-details">
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label for="taskDate">📅 Tanggal Deadline</label>
+                                <input type="date" id="taskDate" required>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="taskTime">⏰ Waktu Deadline</label>
+                                <input type="time" id="taskTime" required>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="taskPriority">Level Prioritas</label>
+                            <select id="taskPriority">
+                                <option value="low">Low 🟢</option>
+                                <option value="medium">Medium 🟡</option>
+                                <option value="high">High 🔴</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">
+                        <span>Tambahkan Tugas</span>
+                        <span class="emoji">✨</span>
+                    </button>
+                </form>
+            </section>
+
+            <section class="status-section">
+                <h2>Kolom Centang</h2>
+                
+                <div class="column">
+                    <div class="column-header to-do">
+                        <h3>To Do 📋</h3>
+                        <span class="task-count" id="todoCount">0</span>
+                    </div>
+                    <div class="task-list" id="todoList"></div>
+                </div>
+
+                <div class="column">
+                    <div class="column-header done">
+                        <h3>Done ✅</h3>
+                        <span class="task-count" id="doneCount">0</span>
+                    </div>
+                    <div class="task-list" id="doneList"></div>
+                </div>
+            </section>
+
+            <section class="delete-section">
+                <button class="btn-delete-all" id="deleteAllBtn">
+                    <span>Delete All</span>
+                    <span class="emoji">🗑️</span>
+                </button>
+            </section>
+        </main>
+    </div>
+    
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Ubah Profile</h3>
+            <form id="profileUpdateForm">
+                <div class="input-group">
+                    <label for="update-username">Username</label>
+                    <input type="text" id="update-username" required>
+                </div>
+                <div class="input-group">
+                    <label for="update-absen">No. Absen</label>
+                    <input type="number" id="update-absen" required>
+                </div>
+                <div class="input-group">
+                    <label for="update-divisi">Divisi</label>
+                    <input type="text" id="update-divisi" required>
+                </div>
+                <div class="input-group">
+                    <label for="update-password">Ganti Password (Kosongkan jika tidak ingin ganti)</label>
+                    <input type="password" id="update-password">
+                </div>
+                <div class="input-group">
+    <label for="taskAssignees">👥 Anggota yang Ditugaskan</label>
+    <select id="taskAssignees" multiple required>
+        </select>
+</div>
+                <button type="submit" class="btn-submit">Simpan Perubahan</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="./src/script.js"></script>
+</body>
+</html>
