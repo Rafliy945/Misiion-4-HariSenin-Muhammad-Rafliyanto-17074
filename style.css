@@ -1,0 +1,749 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Notification Styles */
+#notificationContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+}
+
+.notification {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    animation: slideInRight 0.5s ease-out;
+}
+
+.notification.warning {
+    border-left: 5px solid #f59e0b;
+}
+
+.notification.urgent {
+    border-left: 5px solid #ef4444;
+    animation: shake 0.5s ease-in-out;
+}
+
+.notification-icon {
+    font-size: 2rem;
+}
+
+.notification-content h4 {
+    margin-bottom: 0.3rem;
+    color: #333;
+}
+
+.notification-content p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Header */
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.logo-circle {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.logo-circle span {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.greeting {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.btn-logout {
+    padding: 0.7rem 1.5rem;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+}
+
+/* Main Content */
+.main-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+section {
+    margin-bottom: 2.5rem;
+}
+
+section h2 {
+    color: #667eea;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Profile Section */
+.profile-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 2rem;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    color: white;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    border: 3px solid white;
+}
+
+.profile-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.profile-info p {
+    opacity: 0.9;
+}
+
+/* Time Section */
+.time-card {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    padding: 2rem;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+}
+
+.time {
+    display: block;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.date {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Task Input Section */
+#taskForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#taskText {
+    width: 100%;
+    padding: 1.2rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+#taskText:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.task-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-group label {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.input-group input,
+.input-group select {
+    padding: 0.9rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.2);
+}
+
+.btn-submit {
+    padding: 1.2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+/* Status Section */
+.status-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.column-header {
+    padding: 1.2rem;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+}
+
+.column-header.to-do {
+    background: linear-gradient(135deg, #feca57 0%, #ff9ff3 100%);
+}
+
+.column-header.done {
+    background: linear-gradient(135deg, #48dbfb 0%, #0abde3 100%);
+}
+
+.task-count {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: 200px;
+}
+
+.task-item {
+    background: #f8f9fa;
+    padding: 1.2rem;
+    border-radius: 12px;
+    border-left: 4px solid;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.task-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.task-item.low {
+    border-color: #10b981;
+}
+
+.task-item.medium {
+    border-color: #f59e0b;
+}
+
+.task-item.high {
+    border-color: #ef4444;
+}
+
+.task-item.done-task {
+    opacity: 0.7;
+    background: #e8f5e9;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 0.8rem;
+}
+
+.task-check {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex: 1;
+}
+
+.task-checkbox {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    accent-color: #667eea;
+}
+
+.task-text {
+    flex: 1;
+    font-size: 1rem;
+    color: #333;
+    word-break: break-word;
+}
+
+.task-text.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.task-priority {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+}
+
+.task-priority.low {
+    background: #10b981;
+}
+
+.task-priority.medium {
+    background: #f59e0b;
+}
+
+.task-priority.high {
+    background: #ef4444;
+}
+
+.task-deadline {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.task-deadline.urgent {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+.task-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-delete-task {
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-delete-task:hover {
+    transform: scale(1.05);
+    box-shadow: 0 3px 10px rgba(245, 87, 108, 0.4);
+}
+
+/* Delete Section */
+.delete-section {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-delete-all {
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-delete-all:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 1064px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .user-info {
+        flex-direction: column;
+    }
+    
+    .status-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .input-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .time {
+        font-size: 2rem;
+    }
+}
+/* ... existing style.css content ... */
+
+/* Profile Card new elements */
+.profile-info p {
+    margin-bottom: 0.5rem;
+}
+
+/* Profile Update Button */
+.btn-update-profile {
+    padding: 0.6rem 1.2rem;
+    background: #48dbfb; /* A nice blue color */
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-update-profile:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(72, 219, 251, 0.4);
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+    animation: fadeInModal 0.3s;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    width: 90%; 
+    max-width: 500px;
+    position: relative;
+    animation: slideDown 0.4s ease-out;
+}
+
+.modal-content h3 {
+    color: #667eea;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.modal-content .btn-submit {
+    margin-top: 1.5rem;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive adjustment for modal */
+@media (max-width: 600px) {
+    .modal-content {
+        margin: 15% auto;
+    }
+}
+
+/* ... existing style.css content ... */
+
+/* ... (existing styles) ... */
+
+/* Notification Styles */
+#notificationContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+}
+
+.notification {
+    background: white;
+    padding: 1rem 1.5rem; /* Disesuaikan agar tidak terlalu besar */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: flex-start; /* Menggunakan flex-start agar konten tetap rapi */
+    gap: 1rem;
+    animation: slideInRight 0.5s ease-out;
+    border-left: 5px solid;
+    opacity: 1;
+    transition: all 0.5s ease; /* Tambahkan transisi untuk animasi hilang */
+}
+
+.notification.warning {
+    border-color: #ffc107; /* Kuning */
+}
+
+.notification.urgent {
+    border-color: #dc3545; /* Merah */
+}
+
+.notification-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    flex-shrink: 0; /* Agar icon tidak mengecil */
+}
+
+.notification-content h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.notification-content p {
+    margin: 0.2rem 0 0 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Keyframes untuk animasi masuk dan keluar */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Keyframes untuk animasi hilang (digunakan di JS) */
+.notification.fade-out {
+    opacity: 0 !important;
+    transform: translateX(100%) !important;
+}
+
+/* Tambahan: Styling untuk Modal Profile */
+.btn-update-profile {
+    padding: 0.6rem 1.2rem;
+    background: #48dbfb;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+/* ... (existing modal styles) ... */
+
+/* style.css: Tambahkan di bagian Task List Styles */
+
+.task-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* START: KODE BARU UNTUK METADATA TUGAS */
+.task-meta {
+    margin-bottom: 0.8rem;
+    padding-left: 32px; /* Sejajar dengan checkbox */
+    font-size: 0.85rem;
+    color: #444;
+    border-top: 1px solid #eee;
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.task-meta p {
+    margin: 0.3rem 0;
+    line-height: 1.3;
+}
+
+.task-assignees strong, .task-creator strong {
+    font-weight: 700;
+}
+/* END: KODE BARU */
+
+.task-deadline {
+    display: flex;
+    /* ... (gaya lainnya) ... */
+}
